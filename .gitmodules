@@ -1,0 +1,24 @@
+[submodule "hed"]
+	path = hed
+	url = https://github.com/42dotmk/hed
+[submodule "hterm"]
+	path = hterm
+	url = https://github.com/42dotmk/hterm
+[submodule "hwm"]
+	path = hwm
+	url = https://github.com/42dotmk/hwm
+[submodule "hws"]
+	path = hws
+	url = https://github.com/42dotmk/hws
+[submodule "htray"]
+	path = htray
+	url = https://github.com/42dotmk/htray
+[submodule "hnd"]
+	path = hnd
+	url = https://github.com/42dotmk/hnd
+[submodule "hsm"]
+	path = hsm
+	url = https://github.com/42dotmk/hsm
+[submodule "hml"]
+	path = hml
+	url = https://github.com/42dotmk/hml
