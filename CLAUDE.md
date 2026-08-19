@@ -24,8 +24,8 @@ Planned, not yet started: `hweb` (browser).
 
 All projects follow the same suckless-style ethos, so cross-project habits transfer:
 
-- Pure C99 (hed is C11), minimal dependencies, `-pedantic -Wall -Wextra` builds that must stay warning-free — the compiler flags are the linter.
-- Configuration is compiled in (`config.h` / `config.c` / `static const` blocks), never runtime config files. Changing settings means editing source and recompiling.
+- Pure C11, minimal dependencies, `-pedantic -Wall -Wextra` builds that must stay warning-free — the compiler flags are the linter.
+- Configuration is compiled in: every project keeps its settings in a `config.h` included by the main source file (hed's is `src/config.h`), never runtime config files. Changing settings means editing source and recompiling.
 - `make` builds, `make install` symlinks into `~/.local/bin` (no sudo), `make clean` cleans. The root `Makefile` fans these out across all projects (`make`, `make install`, `make <project>`); hed is the one exception — its symlink install target is `install-dev`, which the root makefile uses.
 - Only hed (`make test`) and hterm (`make check`) have test suites. The X11 projects are verified by running them (hwm can be driven under Xephyr; see its CLAUDE.md).
 - `vendor/stb_ds.h` is the shared dynamic-array vendored dependency where one is needed.

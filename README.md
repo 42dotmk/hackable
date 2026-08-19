@@ -17,6 +17,7 @@ set**: these exact commits run together as a live desktop session.
 | [hws](https://github.com/42dotmk/hws) | Niri-style workspace/window overview overlay for X11 (EWMH, live composited thumbnails) |
 | [htray](https://github.com/42dotmk/htray) | System tray + status bar overlay for X11 (XEmbed, single file) |
 | [hnd](https://github.com/42dotmk/hnd) | Desktop notification daemon (org.freedesktop.Notifications over raw libdbus, single file) |
+| [hmenu](https://github.com/42dotmk/hmenu) | Rofi-style launcher (item lists from shell commands, matching delegated to `fzf --filter`, single file) |
 | [hml](https://github.com/42dotmk/hml) | IMAP/Maildir mail sync, mbsync-compatible on-disk state, in progress |
 | [hsm](https://github.com/42dotmk/hsm) | Runit-style service supervisor (daemon `hsmd` + client `hsm`), in progress |
 
@@ -36,7 +37,7 @@ Each subproject's own README covers its usage and per-project install.
 
 ## Conventions
 
-- Pure C99 (hed is C11), minimal dependencies; the compiler flags are
+- Pure C11, minimal dependencies; the compiler flags are
   the linter.
 - Configuration is compiled in (`config.h` / `config.c`), never runtime
   config files: change the source, recompile.
