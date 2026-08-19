@@ -3,25 +3,33 @@ The idea is to write my own software for the things that i use on my system.
 
 It should 
 ## [DONE] hed   - editor
-Location is in `/home/halicea/projects/hackable/hed`
+Location: `/home/halicea/projects/hackable/hed`
 
 ## [DONE] hterm - terminal
-Location is in `/home/halicea/projects/hackable/hterm`
+Location: `/home/halicea/projects/hackable/hterm`
 
 ## [DONE] hwm   - window manager
-Location is in `/home/halicea/projects/hackable/hwm`
+Location: `/home/halicea/projects/hackable/hwm`
 
 ## [DONE] htray - system tray app
-Location is in `/home/halicea/projects/hackable/htray`
+Location: `/home/halicea/projects/hackable/htray`
 
 ## [DONE] hws   - workspace switcher
-Location is in `/home/halicea/projects/hackable/hws`
+Location: `/home/halicea/projects/hackable/hws`
 
 ## [DONE] hnd   - notification daemon
-Location is in `/home/halicea/projects/hackable/hnd`
+Location: `/home/halicea/projects/hackable/hnd`
+
+## [DONE] hmenu - launcher (rofi-like, fzf-backed)
+Location: `/home/halicea/projects/hackable/hmenu`
+
+## [IN-PROGRESS] hml - mail sync (like mbsync but faster, 10x faster)
+Location: `/home/halicea/projects/hackable/hml`
 
 ## [IN-PROGRESS] hsm   - service manager
+Location: `/home/halicea/projects/hackable/hsm`
+
+
 
 # TODOs
 ## hweb  - web browser
-## hmail - mail sync (like notmuch+mbsync)

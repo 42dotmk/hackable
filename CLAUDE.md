@@ -14,6 +14,7 @@ A workspace of self-written replacements for the user's day-to-day system softwa
 | `hws/` | Niri-style workspace/window overview overlay for X11 (EWMH client, live composited thumbnails) |
 | `htray/` | System tray + status bar overlay for X11 (XEmbed, single file) |
 | `hnd/` | Desktop notification daemon (org.freedesktop.Notifications over raw libdbus, single file) |
+| `hmenu/` | Rofi-style launcher (centered X11 window, item lists from shell commands, matching delegated to `fzf --filter`, single file) |
 | `hsm/` | Runit-style service supervisor (daemon `hsmd` + client `hsm`), in progress |
 | `hml/` | IMAP/Maildir mail sync, mbsync-compatible on-disk state (shares `~/.mail` with mbsync), in progress |
 
@@ -37,3 +38,4 @@ These tools are developed against each other and run together as the user's live
 - A bug observed in one tool may belong to a sibling (e.g. terminal rendering issues seen in hed may be hterm's or hwm's fault); fixes sometimes land in the neighbor repo.
 - Rebuilding can go live immediately: a running `hwm` watches its own binary and re-execs after `make` replaces it. Be aware of this before rebuilding hwm on the user's machine.
 - `hws`, `htray`, and `hwm` interoperate purely through EWMH root-window messages — they must stay WM/client-agnostic, not grow private protocols.
+- `hws` yields its keyboard/pointer grab (and stops re-raising) while an override-redirect `_NET_WM_WINDOW_TYPE_DIALOG` window is mapped — that is how `hmenu` works on top of the overview. It keys on the EWMH window type, not on hmenu specifically; any grabbing popup that sets DIALOG gets the same courtesy.

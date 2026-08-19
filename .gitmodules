@@ -16,6 +16,9 @@
 [submodule "hnd"]
 	path = hnd
 	url = https://github.com/42dotmk/hnd
+[submodule "hmenu"]
+	path = hmenu
+	url = https://github.com/42dotmk/hmenu
 [submodule "hsm"]
 	path = hsm
 	url = https://github.com/42dotmk/hsm

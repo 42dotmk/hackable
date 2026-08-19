@@ -17,8 +17,8 @@ set**: these exact commits run together as a live desktop session.
 | [hws](https://github.com/42dotmk/hws) | Niri-style workspace/window overview overlay for X11 (EWMH, live composited thumbnails) |
 | [htray](https://github.com/42dotmk/htray) | System tray + status bar overlay for X11 (XEmbed, single file) |
 | [hnd](https://github.com/42dotmk/hnd) | Desktop notification daemon (org.freedesktop.Notifications over raw libdbus, single file) |
-| [hsm](https://github.com/42dotmk/hsm) | Runit-style service supervisor (daemon `hsmd` + client `hsm`), in progress |
 | [hml](https://github.com/42dotmk/hml) | IMAP/Maildir mail sync, mbsync-compatible on-disk state, in progress |
+| [hsm](https://github.com/42dotmk/hsm) | Runit-style service supervisor (daemon `hsmd` + client `hsm`), in progress |
 
 Planned, not yet started: `hweb` (browser).
 
