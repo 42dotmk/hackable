@@ -29,7 +29,7 @@ All projects follow the same suckless-style ethos, so cross-project habits trans
 - `make` builds, `make install` symlinks into `~/.local/bin` (no sudo), `make clean` cleans. The root `Makefile` fans these out across all projects (`make`, `make install`, `make <project>`); hed is the one exception — its symlink install target is `install-dev`, which the root makefile uses.
 - Only hed (`make test`) and hterm (`make check`) have test suites. The X11 projects are verified by running them (hwm can be driven under Xephyr; see its CLAUDE.md).
 - `vendor/stb_ds.h` is the shared dynamic-array vendored dependency where one is needed.
-- Prefer deleting features to adding flags; keep code small and readable, match each project's exact formatting style (they differ in details like indentation — check the local CLAUDE.md).
+- Prefer deleting features to adding flags; keep code small and readable. Formatting is uniform: every repo carries the same `.clang-format` (hed's — 4-space indent, attached braces, 80 columns, sorted includes; hed's `fmt` plugin runs plain `clang-format -i`), so run `clang-format -i` on files you touch.
 
 ## Cross-project relationships
 
