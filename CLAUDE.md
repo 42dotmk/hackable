@@ -17,6 +17,7 @@ A workspace of self-written replacements for the user's day-to-day system softwa
 | `hmenu/` | Rofi-style launcher (centered X11 window, item lists from shell commands, matching delegated to `fzf --filter`, single file) |
 | `hsm/` | Runit-style service supervisor (daemon `hsmd` + client `hsm`), in progress |
 | `hml/` | IMAP/Maildir mail sync, mbsync-compatible on-disk state (shares `~/.mail` with mbsync), in progress |
+| `hstt/` | Speech-to-text dictation: hotkey-toggled mic recording, local whisper.cpp transcription, types into the focused X11 window via XTEST (single file) |
 
 Planned, not yet started: `hweb` (browser).
 

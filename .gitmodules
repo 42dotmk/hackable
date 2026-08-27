@@ -25,3 +25,6 @@
 [submodule "hml"]
 	path = hml
 	url = https://github.com/42dotmk/hml
+[submodule "hstt"]
+	path = hstt
+	url = https://github.com/42dotmk/hstt

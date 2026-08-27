@@ -1,3 +1,5 @@
-.claude/
+.claude/*
+!.claude/agents/
+!.claude/skills/
 .hedlog
 tags
