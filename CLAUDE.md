@@ -25,7 +25,7 @@ A workspace of self-written replacements for the user's day-to-day system softwa
 All projects follow the same suckless-style ethos, so cross-project habits transfer:
 
 - Pure C11, minimal dependencies, `-pedantic -Wall -Wextra` builds that must stay warning-free — the compiler flags are the linter.
-- Configuration is compiled in: every project keeps its settings in a `config.h` included by the main source file (hed's is `src/config.h`), never runtime config files. Changing settings means editing source and recompiling.
+- Configuration is compiled in: every project keeps its settings in a `config.h` included by the main source file (hed's is `src/config.h`). Changing structure means editing source and recompiling. Exception in progress: hmenu pilots `vendor/hconf.h`, a tiny shared reader that overlays values from `~/.config/hackable/<tool>.conf` onto the config.h defaults (env vars still win); validate with `<tool> --check`. If the pilot holds, the other tools adopt the same pattern.
 - `make` builds, `make install` symlinks into `~/.local/bin` (no sudo), `make clean` cleans. The root `Makefile` fans these out across all projects (`make`, `make install`, `make <project>`); hed is the one exception — its symlink install target is `install-dev`, which the root makefile uses.
 - Only hed (`make test`) and hterm (`make check`) have test suites. The X11 projects are verified by running them (hwm and hweb can be driven under Xephyr; see their CLAUDE.md).
 - `vendor/stb_ds.h` is the shared dynamic-array vendored dependency where one is needed.
