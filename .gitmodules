@@ -28,3 +28,6 @@
 [submodule "hstt"]
 	path = hstt
 	url = https://github.com/42dotmk/hstt
+[submodule "hweb"]
+	path = hweb
+	url = git@github.com:42dotmk/hweb.git

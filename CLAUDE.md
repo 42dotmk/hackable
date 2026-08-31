@@ -16,10 +16,9 @@ A workspace of self-written replacements for the user's day-to-day system softwa
 | `hnd/` | Desktop notification daemon (org.freedesktop.Notifications over raw libdbus, single file) |
 | `hmenu/` | Rofi-style launcher (centered X11 window, item lists from shell commands, matching delegated to `fzf --filter`, single file) |
 | `hsm/` | Runit-style service supervisor (daemon `hsmd` + client `hsm`), in progress |
-| `hml/` | IMAP/Maildir mail sync, mbsync-compatible on-disk state (shares `~/.mail` with mbsync), in progress |
+| `hml/` | Mail in one binary: IMAP/Maildir sync with mbsync-compatible on-disk state (shares `~/.mail` with mbsync), SMTP send, and a notmuch-style search index (`hml new`/`search`/`count`/`tags`, SQLite FTS5) |
 | `hstt/` | Speech-to-text dictation: hotkey-toggled mic recording, local whisper.cpp transcription, types into the focused X11 window via XTEST (single file) |
-
-Planned, not yet started: `hweb` (browser).
+| `hweb/` | Vim-like WebKitGTK browser: one window per process, modal keys, request headers via a web-process extension, JS injection, events on stdout / commands on stdin (`hweb.c` + `hweb-ext.c`) |
 
 ## Shared conventions
 
@@ -28,7 +27,7 @@ All projects follow the same suckless-style ethos, so cross-project habits trans
 - Pure C11, minimal dependencies, `-pedantic -Wall -Wextra` builds that must stay warning-free — the compiler flags are the linter.
 - Configuration is compiled in: every project keeps its settings in a `config.h` included by the main source file (hed's is `src/config.h`), never runtime config files. Changing settings means editing source and recompiling.
 - `make` builds, `make install` symlinks into `~/.local/bin` (no sudo), `make clean` cleans. The root `Makefile` fans these out across all projects (`make`, `make install`, `make <project>`); hed is the one exception — its symlink install target is `install-dev`, which the root makefile uses.
-- Only hed (`make test`) and hterm (`make check`) have test suites. The X11 projects are verified by running them (hwm can be driven under Xephyr; see its CLAUDE.md).
+- Only hed (`make test`) and hterm (`make check`) have test suites. The X11 projects are verified by running them (hwm and hweb can be driven under Xephyr; see their CLAUDE.md).
 - `vendor/stb_ds.h` is the shared dynamic-array vendored dependency where one is needed.
 - Prefer deleting features to adding flags; keep code small and readable. Formatting is uniform: every repo carries the same `.clang-format` (hed's — 4-space indent, attached braces, 80 columns, sorted includes; hed's `fmt` plugin runs plain `clang-format -i`), so run `clang-format -i` on files you touch.
 
