@@ -31,3 +31,9 @@
 [submodule "hweb"]
 	path = hweb
 	url = https://github.com/42dotmk/hweb
+[submodule "hbg"]
+	path = hbg
+	url = https://github.com/42dotmk/hbg
+[submodule "hos"]
+	path = hos
+	url = https://github.com/42dotmk/hos

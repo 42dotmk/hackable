@@ -2,7 +2,7 @@
 # makefile; this just fans out. All installs are symlinks into ~/.local/bin
 # (hed's plain `install` copies to /usr/local, so we use its install-dev).
 
-PROJECTS = hed hterm hwm hws htray hnd hmenu hsm hml hstt hweb
+PROJECTS = hed hterm hwm hws htray hnd hmenu hsm hml hstt hweb hbg
 
 all:
 	@for p in $(PROJECTS); do $(MAKE) -C $$p || exit 1; done

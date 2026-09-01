@@ -14,11 +14,13 @@ A workspace of self-written replacements for the user's day-to-day system softwa
 | `hws/` | Niri-style workspace/window overview overlay for X11 (EWMH client, live composited thumbnails) |
 | `htray/` | System tray + status bar overlay for X11 (XEmbed, single file) |
 | `hnd/` | Desktop notification daemon (org.freedesktop.Notifications over raw libdbus, single file) |
+| `hbg/` | Root-window background setter/rotator: cover-scales images from a directory onto each monitor, esetroot pixmap protocol, SIGUSR1 skips (single file, vendored stb_image) |
 | `hmenu/` | Rofi-style launcher (centered X11 window, item lists from shell commands, matching delegated to `fzf --filter`, single file) |
 | `hsm/` | Runit-style service supervisor (daemon `hsmd` + client `hsm`), in progress |
 | `hml/` | Mail in one binary: IMAP/Maildir sync with mbsync-compatible on-disk state (shares `~/.mail` with mbsync), SMTP send, and a notmuch-style search index (`hml new`/`search`/`count`/`tags`, SQLite FTS5) |
 | `hstt/` | Speech-to-text dictation: hotkey-toggled mic recording, local whisper.cpp transcription, types into the focused X11 window via XTEST (single file) |
 | `hweb/` | Vim-like WebKitGTK browser: one window per process, modal keys, request headers via a web-process extension, JS injection, events on stdout / commands on stdin (`hweb.c` + `hweb-ext.c`) |
+| `hos/` | The distribution: Void Linux + the hackable tools as a bootable live ISO (`make iso`); no C, just `PACKAGES`/`SERVICES`/`IGNORE`/`overlay/` fed to void-mklive, sources on the ISO at `/usr/src/hackable` with binaries symlinked into `/bin`. Not in the root Makefile fan-out (needs sudo) |
 
 ## Shared conventions
 
