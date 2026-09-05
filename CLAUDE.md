@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A workspace of self-written replacements for the user's day-to-day system software ("hackable" tools — see `hackable.md`). It is not one codebase: each subdirectory is an **independent git repository** with its own `CLAUDE.md` containing the build commands, architecture, and style rules for that project. Always read the subproject's `CLAUDE.md` before working in it; this file only orients you across them.
+A workspace of self-written replacements for the user's day-to-day system software ("hackable" tools — see `README.md`). It ships in two shapes at once: as **separate apps** — every tool builds and runs standalone on any Linux desktop, speaking only standard protocols so it can pair with third-party counterparts — and as **an entire distro**, `hos/`, which packs the toolset onto a bootable Void Linux live ISO with `hsmd` as init. Keep both audiences in mind: a tool must never grow a hard dependency on its siblings, and workspace-level changes should consider what lands on the ISO.
+
+It is not one codebase: each subdirectory is an **independent git repository** with its own `CLAUDE.md` containing the build commands, architecture, and style rules for that project. Always read the subproject's `CLAUDE.md` before working in it; this file only orients you across them.
 
 | Project | What it is |
 |---|---|
@@ -19,7 +21,8 @@ A workspace of self-written replacements for the user's day-to-day system softwa
 | `hsm/` | Runit-style service supervisor (daemon `hsmd` + client `hsm`), in progress |
 | `hml/` | Mail in one binary: IMAP/Maildir sync with mbsync-compatible on-disk state (shares `~/.mail` with mbsync), SMTP send, and a notmuch-style search index (`hml new`/`search`/`count`/`tags`, SQLite FTS5) |
 | `hstt/` | Speech-to-text dictation: hotkey-toggled mic recording, local whisper.cpp transcription, types into the focused X11 window via XTEST (single file) |
-| `hweb/` | Vim-like WebKitGTK browser: one window per process, modal keys, request headers via a web-process extension, JS injection, events on stdout / commands on stdin (`hweb.c` + `hweb-ext.c`) |
+| `hweb/` | Vim-like WebKitGTK browser: one window per process, modal keys, request headers via a web-process extension, JS injection, events on stdout / commands on stdin or a per-window control socket driven by `hwebc` (chrome-dumper's automation surface: click/type/select/scroll/highlight/dump in `auto.js`, real synthesized mouse and key input, screenshots) |
+| `hal/` | Hackable AI Layer: agentic loop + harness in C for any OpenAI-compatible model (tool calling, SSE), daemon `hald` + client `hal`, talks by voice through hstt and piper, skills as markdown, `make check` tests |
 | `hos/` | The distribution: Void Linux + the hackable tools as a bootable live ISO (`make iso`); no C, just `PACKAGES`/`SERVICES`/`IGNORE`/`overlay/` fed to void-mklive, sources on the ISO at `/usr/src/hackable` with binaries symlinked into `/bin`. Not in the root Makefile fan-out (needs sudo) |
 
 ## Shared conventions
@@ -29,7 +32,7 @@ All projects follow the same suckless-style ethos, so cross-project habits trans
 - Pure C11, minimal dependencies, `-pedantic -Wall -Wextra` builds that must stay warning-free — the compiler flags are the linter.
 - Configuration is compiled in: every project keeps its settings in a `config.h` included by the main source file (hed's is `src/config.h`). Changing structure means editing source and recompiling. Exception in progress: hmenu pilots `vendor/hconf.h`, a tiny shared reader that overlays values from `~/.config/hackable/<tool>.conf` onto the config.h defaults (env vars still win); validate with `<tool> --check`. If the pilot holds, the other tools adopt the same pattern.
 - `make` builds, `make install` symlinks into `~/.local/bin` (no sudo), `make clean` cleans. The root `Makefile` fans these out across all projects (`make`, `make install`, `make <project>`); hed is the one exception — its symlink install target is `install-dev`, which the root makefile uses.
-- Only hed (`make test`) and hterm (`make check`) have test suites. The X11 projects are verified by running them (hwm and hweb can be driven under Xephyr; see their CLAUDE.md).
+- Only hed (`make test`), hterm (`make check`) and hal (`make check`) have test suites. The X11 projects are verified by running them (hwm and hweb can be driven under Xephyr; see their CLAUDE.md).
 - `vendor/stb_ds.h` is the shared dynamic-array vendored dependency where one is needed.
 - Prefer deleting features to adding flags; keep code small and readable. Formatting is uniform: every repo carries the same `.clang-format` (hed's — 4-space indent, attached braces, 80 columns, sorted includes; hed's `fmt` plugin runs plain `clang-format -i`), so run `clang-format -i` on files you touch.
 
