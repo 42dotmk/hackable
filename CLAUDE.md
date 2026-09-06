@@ -19,10 +19,10 @@ It is not one codebase: each subdirectory is an **independent git repository** w
 | `hbg/` | Root-window background setter/rotator: cover-scales images from a directory onto each monitor, esetroot pixmap protocol, SIGUSR1 skips (single file, vendored stb_image) |
 | `hmenu/` | Rofi-style launcher (centered X11 window, item lists from shell commands, matching delegated to `fzf --filter`, single file) |
 | `hsm/` | Runit-style service supervisor (daemon `hsmd` + client `hsm`), in progress |
-| `hml/` | Mail in one binary: IMAP/Maildir sync with mbsync-compatible on-disk state (shares `~/.mail` with mbsync), SMTP send, and a notmuch-style search index (`hml new`/`search`/`count`/`tags`, SQLite FTS5) |
+| `hml/` | Mail in one binary: IMAP/Maildir sync with mbsync-compatible on-disk state (shares `~/.mail` with mbsync), SMTP send with local delivery for `@hal` addresses (into `~/.mail/hal/<name>/`, hal's message bus), and a notmuch-style search index (`hml new`/`search`/`count`/`tags`, SQLite FTS5) |
 | `hstt/` | Speech-to-text dictation: hotkey-toggled mic recording, local whisper.cpp transcription, types into the focused X11 window via XTEST (single file) |
 | `hweb/` | Vim-like WebKitGTK browser: one window per process, modal keys, request headers via a web-process extension, JS injection, events on stdout / commands on stdin or a per-window control socket driven by `hwebc` (chrome-dumper's automation surface: click/type/select/scroll/highlight/dump in `auto.js`, real synthesized mouse and key input, screenshots) |
-| `hal/` | Hackable AI Layer: agentic loop + harness in C for any OpenAI-compatible model (tool calling, SSE), daemon `hald` + client `hal`, talks by voice through hstt and piper, skills as markdown, `make check` tests |
+| `hal/` | Hackable AI Layer: agentic loop + harness in C for any OpenAI-compatible model (tool calling, SSE), daemon `hald` + client `hal`, talks by voice through hstt and piper, has a mailbox (`hml send main@hal` starts a run, replies go to `user@hal`), skills as markdown, `make check` tests |
 | `hos/` | The distribution: Void Linux + the hackable tools as a bootable live ISO (`make iso`); no C, just `PACKAGES`/`SERVICES`/`IGNORE`/`overlay/` fed to void-mklive, sources on the ISO at `/usr/src/hackable` with binaries symlinked into `/bin`. Not in the root Makefile fan-out (needs sudo) |
 
 ## Shared conventions
@@ -43,4 +43,5 @@ These tools are developed against each other and run together as the user's live
 - A bug observed in one tool may belong to a sibling (e.g. terminal rendering issues seen in hed may be hterm's or hwm's fault); fixes sometimes land in the neighbor repo.
 - Rebuilding can go live immediately: a running `hwm` watches its own binary and re-execs after `make` replaces it. Be aware of this before rebuilding hwm on the user's machine.
 - `hws`, `htray`, and `hwm` interoperate purely through EWMH root-window messages — they must stay WM/client-agnostic, not grow private protocols.
+- `hal` and `hml` meet only on standard formats: hal writes mail through a sendmail-shaped command (`hml send -t` by default) and reads its inbox as a plain Maildir; hml's local delivery for `@hal` addresses is what makes that a message bus. Neither links or execs the other by name beyond that default.
 - `hws` yields its keyboard/pointer grab (and stops re-raising) while an override-redirect `_NET_WM_WINDOW_TYPE_DIALOG` window is mapped — that is how `hmenu` works on top of the overview. It keys on the EWMH window type, not on hmenu specifically; any grabbing popup that sets DIALOG gets the same courtesy.

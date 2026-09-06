@@ -23,13 +23,27 @@ Location: `/home/halicea/projects/hackable/hnd`
 ## [DONE] hmenu - launcher (rofi-like, fzf-backed)
 Location: `/home/halicea/projects/hackable/hmenu`
 
-## [IN-PROGRESS] hml - mail sync (like mbsync but faster, 10x faster)
+## [DONE] hml - mail sync (like mbsync but faster, 10x faster)
+completed:: 2026-09-04
 Location: `/home/halicea/projects/hackable/hml`
 
-## [IN-PROGRESS] hsm   - service manager
+## [DONE] hsm   - service manager
+completed:: 2026-09-04
 Location: `/home/halicea/projects/hackable/hsm`
 
+## [DONE] hos   - the distro (void + the hackable tools, bootable iso)
+completed:: 2026-09-04
+Location: `/home/halicea/projects/hackable/hos`
 
+## [DONE] hweb  - web browser
+completed:: 2026-09-04
+Location: `/home/halicea/projects/hackable/hweb`
 
-# TODOs
-## hweb  - web browser
+## [DONE] hbg  - background setter
+completed:: 2026-09-04
+deadline:: 2026-09-04
+Location: `/home/halicea/projects/hackable/hbg`
+
+## [IN-PROGRESS] hal  - the AI layer (agent loop + harness, voice)
+started:: 2026-09-05
+Location: `/home/halicea/projects/hackable/hal`
