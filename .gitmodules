@@ -38,5 +38,5 @@
 	path = hos
 	url = https://github.com/42dotmk/hos
 [submodule "hal"]
-	path = hal
+	path = hai
 	url = https://github.com/42dotmk/hal
