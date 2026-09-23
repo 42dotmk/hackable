@@ -7,8 +7,10 @@ small C programs, compiled-in configuration, minimal dependencies,
 
 It comes in two shapes:
 
-- **A distro.** [hos](https://github.com/42dotmk/hos) is Void Linux plus
-  the hackable tools as a bootable live ISO — the whole desktop as an
+- **A distro.** [hos](https://github.com/42dotmk/hos) is the hackable
+  tools as a bootable live ISO, from the kernel up: hos's own init,
+  initramfs, boot scripts, service manager and installer over packages
+  and a kernel from the Void repositories — the whole desktop as an
   operating system, sources included.
 - **Separate apps.** Every tool lives in its own repository, builds on
   its own, and runs on any Linux desktop. They interoperate only through
@@ -35,21 +37,23 @@ session, and are what a hos ISO is built from.
 | [hml](https://github.com/42dotmk/hml) | Mail in one binary: IMAP/Maildir sync with mbsync-compatible on-disk state, SMTP send, notmuch-style search index (SQLite FTS5) |
 | [hstt](https://github.com/42dotmk/hstt) | Speech-to-text dictation: hotkey-toggled recording, local whisper.cpp transcription, types into the focused window (single file) |
 | [hweb](https://github.com/42dotmk/hweb) | Vim-like WebKitGTK browser: one window per process, modal keys, events on stdout / commands on stdin |
-| [hal](https://github.com/42dotmk/hal) | Hackable AI Layer: agentic loop in C for any OpenAI-compatible model (tool calling, SSE streaming), daemon + client, speaks and listens through piper and hstt |
+| [hai](https://github.com/42dotmk/hai) | Hackable AI: agentic loop in C for any OpenAI-compatible model (tool calling, SSE streaming), daemon + client, speaks and listens through piper and hstt |
 | [hsm](https://github.com/42dotmk/hsm) | Runit-style service supervisor (daemon `hsmd` + client `hsm`); runs as PID 1 on hos |
 
 ## The distro
 
 [hos](https://github.com/42dotmk/hos) turns the toolset into a bootable
-live ISO: Void Linux base, `hsmd` as init, the tools' sources on the ISO
-at `/usr/src/hackable` with binaries symlinked into `/bin` — boot it,
-edit the source, `make`, and you are running your change. No C in that
-repo; the ISO is described by four inputs (`PACKAGES`, `SERVICES`,
-`IGNORE`, `overlay/`) fed to void-mklive.
+live ISO: packages and kernel from the Void repositories (xbps), and
+above them hos's own — a static C init in an initramfs it builds itself,
+`hsmd` as pid 1 with hos's boot scripts, a grub menu, an installer — with
+the tools' sources on the ISO at `/usr/src/hackable` and binaries
+symlinked into `/bin`. Boot it, edit the source, `make`, and you are
+running your change. The ISO is described by `PACKAGES`, `SERVICES`,
+`IGNORE`, `overlay/` and `init/`; no void-mklive, no dracut.
 
 ```sh
 cd hos
-make iso     # build the ISO (needs sudo)
+make iso     # build the ISO (no sudo: root work runs in a user namespace)
 make qemu    # boot the newest ISO under kvm
 ```
 

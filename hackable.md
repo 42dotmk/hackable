@@ -31,7 +31,7 @@ Location: `/home/halicea/projects/hackable/hml`
 completed:: 2026-09-04
 Location: `/home/halicea/projects/hackable/hsm`
 
-## [DONE] hos   - the distro (void + the hackable tools, bootable iso)
+## [DONE] hos   - the distro (the hackable tools on a bootable iso; void packages, hos init/initramfs/boot/installer)
 completed:: 2026-09-04
 Location: `/home/halicea/projects/hackable/hos`
 
@@ -44,6 +44,6 @@ completed:: 2026-09-04
 deadline:: 2026-09-04
 Location: `/home/halicea/projects/hackable/hbg`
 
-## [IN-PROGRESS] hal  - the AI layer (agent loop + harness, voice)
+## [IN-PROGRESS] hai  - hackable AI (agent loop + harness, voice)
 started:: 2026-09-05
-Location: `/home/halicea/projects/hackable/hal`
+Location: `/home/halicea/projects/hackable/hai`
